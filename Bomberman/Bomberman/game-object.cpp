@@ -8,12 +8,12 @@ namespace Actors {
 	GameObject::GameObject()
 		: width(0)
 		, height(0)
-		, position(Vector2i())
+		, position(Vector2f())
 	{
 
 	}
 
-	GameObject::GameObject(std::string in_path)
+	GameObject::GameObject(std::string in_path, const Physics::ColliderType in_type)
 		: GameObject()
 	{
 		Core::Game::Subscribe_Object_To_Drawables(this);
@@ -26,7 +26,7 @@ namespace Actors {
 		}
 		width = surface->w;
 		height = surface->h;
-		texture = std::make_shared<SDL_Texture*>(SDL_CreateTextureFromSurface(Core::Game::Get().screen->GetRenderer(), surface));
+		texture = std::make_shared<SDL_Texture*>(SDL_CreateTextureFromSurface(Core::Game::GetInstance().screen->GetRenderer(), surface));
 		if (texture == nullptr)
 		{
 			error_type = GOET_FAILED_TO_CREATE_TEXTURE;
@@ -38,17 +38,22 @@ namespace Actors {
 		rect->h = height;
 		rect->x = 0;
 		rect->y = 0;
-		own_collider = std::make_shared<Physics::BoxCollider>(*this);
+		velocity = Vector2f::zero;
+		own_collider = std::make_shared<Physics::BoxCollider>(*this, in_type);
 	}
 
-	GameObject::GameObject(std::string in_path, const int in_width, const int in_height, Vector2i in_pos)
-		: GameObject(in_path)
+	GameObject::GameObject(std::string in_path, const int in_width, const int in_height, Vector2f in_pos, const Physics::ColliderType in_type)
+		: GameObject(in_path, in_type)
 	{
 		position = in_pos;
 		width = in_width;
 		height = in_height;
 		rect->w = width;
 		rect->h = height;
+		own_collider->heigth = height;
+		own_collider->width = width;
+		own_collider->position = position;
+
 	}
 
 
@@ -57,10 +62,12 @@ namespace Actors {
 	}
 	void GameObject::Draw()
 	{
-		SDL_RenderCopy(Core::Game::Get().screen->GetRenderer(), *texture, nullptr, rect.get());
+		SDL_RenderCopy(Core::Game::GetInstance().screen->GetRenderer(), *texture, nullptr, rect.get());
 	}
 	void GameObject::Update()
 	{
+		rect->x = position.x;
+		rect->y = position.y;
 	}
 }
 

@@ -7,18 +7,18 @@ namespace Physics {
 	class Collider;
 	class PhysicsMgr : public Core::IUpdatable {
 	public:
-		~PhysicsMgr();
 		PhysicsMgr(const PhysicsMgr&) = default;
-		PhysicsMgr& operator=(const PhysicsMgr&) = delete;
+		PhysicsMgr& operator=(const PhysicsMgr&) = default;
+		~PhysicsMgr();
+	protected:
 		PhysicsMgr();
-	private:
 
 	public:
-		void Init();
 		void Update() override;
 		static void SubscribeToPhysicsMgr(Collider* in_collider);
-	private:
+		static PhysicsMgr& GetInstance();
 		static std::vector<Collider*> colliders_in_scene;
-		std::unique_ptr<PhysicsMgr> instance;
+	private:
+		static std::unique_ptr<PhysicsMgr> instance;
 	};
 }

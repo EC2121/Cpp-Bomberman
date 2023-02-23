@@ -9,7 +9,7 @@
 int main(int argc, char** argv)
 {
 	using namespace Core;
-	Game::Get().Init();
-	Game::Get().Loop();
+	Game::GetInstance().Init();
+	Game::GetInstance().Loop();
 
 }

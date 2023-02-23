@@ -4,29 +4,38 @@
 #include "game-object.h"
 
 namespace Physics {
+	enum ColliderType
+	{
+		STATIC,
+		KINEMATIC
+	};
 	class BoxCollider;
 	class Collider : public Core::IUpdatable {
 	public:
-		Collider()
-			: owner(nullptr)
-			, position(Vector2i())
-			, width(0)
-			, heigth(0)
-			, offset(Vector2i())
-		{};
+
 		~Collider() {};
 		Collider(const Collider&) = default;
 		Collider& operator =(const Collider&) = default;
+		Collider()
+			: owner(nullptr)
+			, position(Vector2f())
+			, width(0)
+			, heigth(0)
+			, offset(Vector2f())
+			, type(STATIC)
+		{};
+	protected:
 
 	public:
-		virtual bool CheckForCollisions(Collider& in_other) = 0;
-		virtual bool CheckForCollisions(BoxCollider& in_other) = 0;
+		virtual bool CheckForCollisions(const Collider& in_other) const = 0;
+		virtual bool CheckForCollisions(const BoxCollider& in_other)const  = 0;
 		void Update() override;
 	public:
 		std::shared_ptr<Actors::GameObject> owner;
-		Vector2i position;
+		ColliderType type;
+		Vector2f position;
 		int width;
 		int heigth;
-		Vector2i offset;
+		Vector2f offset;
 	};
 }

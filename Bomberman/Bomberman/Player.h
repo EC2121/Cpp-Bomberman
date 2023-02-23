@@ -5,12 +5,14 @@ namespace Actors {
 	class Player : public GameObject {
 	public:
 		Player() = delete;
-		Player(std::string in_path);
-		Player(std::string in_path, const int in_width, const int in_height, const Vector2i in_pos);
+		Player(std::string in_path, const Physics::ColliderType in_collider_type);
+		Player(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos, const Physics::ColliderType in_collider_type);
 		Player(const Player&) = default;
 		Player& operator=(const Player&) = delete;
-
+		void OnCollide() override;
 		void Update() override;
 
+	protected:
+		float speed;
 	};
 }

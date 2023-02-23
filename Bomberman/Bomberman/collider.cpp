@@ -3,7 +3,10 @@
 #include <vector>
 #include "game-object.h"
 #include "box-collider.h"
+#include <iostream>
 void Physics::Collider::Update()
 {
+	if (type == STATIC) return;
 	position = owner->GetPosition();
+	//std::cout << position.x << " " << position.y << std::endl;
 }

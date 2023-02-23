@@ -11,8 +11,11 @@ namespace Resources {
 	private:
 		static inline std::map<std::string, std::string> resources_paths =
 		{
-			{"zombie", "resources\\spr_zombie_idle.png"},
-			{"zombie", "resources\\spr_zombie_idle.png"}
+			{"zombie", "resources\\zombie.png"},
+			{"zombie2", "resources\\spr_zombie_charge.png"},
+			{"slate", "resources\\slate_64x64.png"}
+
+
 		};
 
 

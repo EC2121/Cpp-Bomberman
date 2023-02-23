@@ -19,11 +19,11 @@ namespace Core {
 	public:
 		~Game();
 		Game(const Game&) = default;
-		Game& operator=(const Game&) = delete;
-	private:
+		Game& operator=(const Game&) = default;
+	protected:
 		Game();
 	public:
-		static Game& Get();
+		static Game& GetInstance();
 		int Init();
 		void Loop();
 		static void Subscribe_Object_To_Drawables(Actors::GameObject* in_obj);
@@ -33,10 +33,8 @@ namespace Core {
 		void UpdateAll();
 	public:
 		std::shared_ptr<Graphics::Screen> screen;
-		std::shared_ptr<Physics::PhysicsMgr> physics_mgr;
 		static std::vector<Actors::GameObject*> drawables;
 		static std::vector<IUpdatable*>  updatables;
-
 	private:
 		static std::unique_ptr<Game> instance;
 		SDL_Event event;

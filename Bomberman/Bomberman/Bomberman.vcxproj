@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bm-math.cpp" />
     <ClCompile Include="box-collider.cpp" />
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="game-object.cpp" />
@@ -145,9 +146,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="physics-mgr.cpp" />
     <ClCompile Include="physics-mgr.h" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="resources.cpp" />
     <ClCompile Include="screen.cpp" />
+    <ClCompile Include="time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bm-math.h" />
@@ -156,9 +158,10 @@
     <ClInclude Include="game-object.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="IUpdatable.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="resources.h" />
     <ClInclude Include="screen.h" />
+    <ClInclude Include="time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

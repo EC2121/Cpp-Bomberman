@@ -1,5 +1,2 @@
-﻿  physics-mgr.cpp
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\physics-mgr.cpp(9,3): warning C4150: deletion of pointer to incomplete type 'Physics::Collider'; no destructor called
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\physics-mgr.h(7,8): message : see declaration of 'Physics::Collider'
-x64\Debug\physics-mgr.obj : warning LNK4042: object specified more than once; extras ignored
+﻿  player.cpp
   Bomberman.vcxproj -> W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\x64\Debug\Bomberman.exe

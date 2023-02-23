@@ -8,7 +8,8 @@ namespace Graphics {
 		: Screen()
 	{
 
-		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER) != 0) {
+		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMECONTROLLER) != 0)
+		{
 			error_type = SET_SDL_INIT_ERROR;
 			std::cout << error_type << SDL_GetError();
 			return;
@@ -20,7 +21,8 @@ namespace Graphics {
 			std::cout << error_type << SDL_GetError();
 		}
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-		if (!renderer) {
+		if (!renderer)
+		{
 			error_type = SET_SDL_RENDERER_INIT_ERROR;
 			std::cout << error_type << SDL_GetError();
 		}
@@ -28,9 +30,20 @@ namespace Graphics {
 
 	Screen::~Screen()
 	{
-		if(renderer) SDL_DestroyRenderer(renderer);
-		if(window) SDL_DestroyWindow(window);
-		if(SDL_WasInit(0)) SDL_Quit();
+		if (renderer)
+		{
+			SDL_DestroyRenderer(renderer);
+		}
+
+		if (window)
+		{
+			SDL_DestroyWindow(window);
+		}
+		if (SDL_WasInit(0))
+		{
+			SDL_Quit();
+		}
+
 	}
 
 

@@ -6,6 +6,7 @@
 #include "IUpdatable.h"
 namespace Physics {
 	class Collider;
+	enum ColliderType;
 }
 
 namespace Actors {
@@ -20,11 +21,12 @@ namespace Actors {
 	class GameObject : public Core::IUpdatable{
 	public:
 		GameObject();
-		GameObject(std::string in_path);
-		GameObject(std::string in_path,const int in_width, const int in_height, Vector2i in_pos);
+		GameObject(std::string in_path, const Physics::ColliderType in_type);
+		GameObject(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos, const Physics::ColliderType in_type);
 		~GameObject();
 	public:
-		const Vector2i GetPosition() const { return position; };
+		Vector2f GetPosition() const { return position; };
+		virtual void OnCollide() {};
 		void Draw();
 		void Update() override;
 
@@ -32,11 +34,12 @@ namespace Actors {
 	public:
 		int width;
 		int height;
-	private:
+	protected:
 		GameObjectErrorType error_type = GOET_NONE;
 		std::shared_ptr<SDL_Rect> rect;
 		std::shared_ptr<SDL_Texture*> texture;
-		Vector2i position;
+		Vector2f position;
+		Vector2f velocity;
 		std::shared_ptr<Physics::Collider> own_collider;
 
 
