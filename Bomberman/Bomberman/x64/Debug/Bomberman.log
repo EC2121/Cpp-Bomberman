@@ -1,2 +1,3 @@
-﻿  player.cpp
+﻿  player_idle_state.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\bm-math.h(43,33): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   Bomberman.vcxproj -> W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\x64\Debug\Bomberman.exe

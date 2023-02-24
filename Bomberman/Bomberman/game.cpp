@@ -31,8 +31,11 @@ namespace Core {
 	{
 		SDL_BlendMode(SDL_BLEND_MUL);
 		screen = std::make_shared<Graphics::Screen>(1920, 720);
-		Actors::GameObject* player = new Actors::Player(Resources::Paths::GetPath("Zombie"),Physics::KINEMATIC);
+		Actors::GameObject* player = new Actors::Player(Resources::Paths::GetPath("zombiesp"),100,100,Vector2f(0,0), Physics::KINEMATIC);
 		Actors::GameObject* go2 = new Actors::GameObject(Resources::Paths::GetPath("slate"),64,64,Vector2f(100,100),Physics::STATIC);
+	
+
+
 		Time::Init();
 		Physics::PhysicsMgr::GetInstance();
 		return 0;

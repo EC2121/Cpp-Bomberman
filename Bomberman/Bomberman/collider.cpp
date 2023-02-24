@@ -8,5 +8,4 @@ void Physics::Collider::Update()
 {
 	if (type == STATIC) return;
 	position = owner->GetPosition();
-	//std::cout << position.x << " " << position.y << std::endl;
 }

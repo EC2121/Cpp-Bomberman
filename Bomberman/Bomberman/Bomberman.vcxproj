@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="bm-math.cpp" />
     <ClCompile Include="box-collider.cpp" />
     <ClCompile Include="collider.cpp" />
@@ -147,20 +148,27 @@
     <ClCompile Include="physics-mgr.cpp" />
     <ClCompile Include="physics-mgr.h" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="player_idle_state.cpp" />
+    <ClCompile Include="player_walk_state.cpp" />
     <ClCompile Include="resources.cpp" />
     <ClCompile Include="screen.cpp" />
     <ClCompile Include="time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="bm-math.h" />
     <ClInclude Include="box-collider.h" />
     <ClInclude Include="collider.h" />
+    <ClInclude Include="player_FSM_include.h" />
     <ClInclude Include="game-object.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="IUpdatable.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="player_idle_state.h" />
+    <ClInclude Include="player_walk_state.h" />
     <ClInclude Include="resources.h" />
     <ClInclude Include="screen.h" />
+    <ClInclude Include="state.h" />
     <ClInclude Include="time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -13,6 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{c624878c-1d60-42b6-953c-8e4756ca3a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{4f1ff48d-a0e5-4dec-82fd-719fc47abfc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{dfa261d9-302d-4199-8e86-03445daa3544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphics">
+      <UniqueIdentifier>{6dfd0448-1463-4b35-a4c5-aa99424b9417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animations">
+      <UniqueIdentifier>{5f35518d-2997-4729-b924-a1b9dc363286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actors">
+      <UniqueIdentifier>{0a2dc836-a8c1-4833-a1ca-3f2df6c87256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM">
+      <UniqueIdentifier>{109cd79a-90fa-44ef-a13d-6b75cf4dfb37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\Player">
+      <UniqueIdentifier>{e62e47d9-0f81-485c-8f07-9deddd81436e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,9 +63,6 @@
     <ClCompile Include="collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="physics-mgr.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="physics-mgr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,37 +75,64 @@
     <ClCompile Include="bm-math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="physics-mgr.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="player_idle_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player_walk_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="bm-math.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game-object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="collider.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="box-collider.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="game.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="IUpdatable.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="collider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="box-collider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="bm-math.h">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="time.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="screen.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="player_idle_state.h">
+      <Filter>Header Files\FSM\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="game-object.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="player_walk_state.h">
+      <Filter>Header Files\FSM\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="player_FSM_include.h">
+      <Filter>Header Files\FSM\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

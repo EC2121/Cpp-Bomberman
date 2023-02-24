@@ -1,5 +1,4 @@
 #include "bm-math.h"
-
 const Vector2f Vector2f::zero = Vector2f(0, 0);
 Vector2f& Vector2f::operator=(const Vector2f& in_other)
 {
@@ -40,4 +39,12 @@ Vector2f& Vector2f::operator-()
 	x = -x;
 	y = -y;
 	return *this;
+}
+
+bool Vector2f::operator>(Vector2f& in_other)
+{
+	
+	float magnitude = this->Magnitude();
+	float magnitude2 = in_other.Magnitude();
+	return magnitude > magnitude2;
 }

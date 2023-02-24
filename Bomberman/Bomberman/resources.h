@@ -13,7 +13,8 @@ namespace Resources {
 		{
 			{"zombie", "resources\\zombie.png"},
 			{"zombie2", "resources\\spr_zombie_charge.png"},
-			{"slate", "resources\\slate_64x64.png"}
+			{"slate", "resources\\slate_64x64.png"},
+			{"zombiesp", "resources\\zombie-walk.png"}
 
 
 		};
