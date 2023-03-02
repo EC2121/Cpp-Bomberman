@@ -1,19 +1,29 @@
-#include "player_walk_state.h"
+#include "player-walk-state.h"
 #include "game-object.h"
 #include "player.h"
-void FSM::PlayerWalkState::OnEnter(Actors::GameObject& owner)
-{
-	owner.ChangeCurrAnimation("walk");
-}
-
-void FSM::PlayerWalkState::OnExit(Actors::GameObject& owner)
-{
-}
-
-void FSM::PlayerWalkState::Update(Actors::GameObject& owner)
-{
-	if (!((Actors::Player&)owner).CheckForMovementInputs())
+namespace FSM {
+	void PlayerWalkState::OnEnter(Actors::GameObject& in_owner)
 	{
-		owner.ChangeCurrentState(IDLE);
+		((Actors::Player&)in_owner).ChangeCurrentAnimation("walk");
+	}
+	
+
+	void PlayerWalkState::OnExit(Actors::GameObject& in_owner)
+	{
+		in_owner.ResetVelocity();
+	}
+
+	void PlayerWalkState::Update(Actors::GameObject& in_owner)
+	{
+		Actors::Player& ref = (Actors::Player&)in_owner;
+		if (!ref.CheckForMovementInputs())
+		{
+			ref.ChangeCurrentState(in_owner,IDLE);
+		}
+		if (ref.CheckForAttackInput())
+		{
+			ref.ChangeCurrentState(in_owner,ATTACK);
+		}
 	}
 }
+

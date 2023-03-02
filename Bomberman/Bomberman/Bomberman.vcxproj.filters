@@ -19,9 +19,6 @@
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{4f1ff48d-a0e5-4dec-82fd-719fc47abfc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\math">
-      <UniqueIdentifier>{dfa261d9-302d-4199-8e86-03445daa3544}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{6dfd0448-1463-4b35-a4c5-aa99424b9417}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,12 @@
     </Filter>
     <Filter Include="Header Files\FSM\Player">
       <UniqueIdentifier>{e62e47d9-0f81-485c-8f07-9deddd81436e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{dfa261d9-302d-4199-8e86-03445daa3544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GarbageCollector">
+      <UniqueIdentifier>{17d2a124-b16f-44e6-ae62-7001fca835e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +58,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="box-collider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IUpdatable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="collider.cpp">
@@ -87,15 +87,42 @@
     <ClCompile Include="player_walk_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="circle-collider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bomb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="destroyable-wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player-attack-state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="garbage-collector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnimatable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IStateMachinable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture-mgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="IUpdatable.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="collider.h">
@@ -105,7 +132,7 @@
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="bm-math.h">
-      <Filter>Header Files\math</Filter>
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="time.h">
       <Filter>Header Files\Core</Filter>
@@ -122,17 +149,44 @@
     <ClInclude Include="state.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="player_idle_state.h">
+    <ClInclude Include="player-idle-state.h">
       <Filter>Header Files\FSM\Player</Filter>
     </ClInclude>
     <ClInclude Include="game-object.h">
       <Filter>Header Files\Actors</Filter>
     </ClInclude>
-    <ClInclude Include="player_walk_state.h">
+    <ClInclude Include="player-walk-state.h">
       <Filter>Header Files\FSM\Player</Filter>
     </ClInclude>
-    <ClInclude Include="player_FSM_include.h">
+    <ClInclude Include="player-FSM-include.h">
       <Filter>Header Files\FSM\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="circle-collider.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="collision-info.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="bomb.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="destroyable-wall.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="player-attack-state.h">
+      <Filter>Header Files\FSM\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="garbage-collector.h">
+      <Filter>Header Files\GarbageCollector</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnimatable.h">
+      <Filter>Header Files\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="IStateMachinable.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="texture-mgr.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

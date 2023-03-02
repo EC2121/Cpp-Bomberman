@@ -34,6 +34,11 @@ Vector2f& Vector2f::operator*=(const float in_other)
 	return *this;
 }
 
+Vector2f Vector2f::operator/(const float& in_other)
+{
+	return Vector2f(this->x / in_other, this->y / in_other);
+}
+
 Vector2f& Vector2f::operator-()
 {
 	x = -x;

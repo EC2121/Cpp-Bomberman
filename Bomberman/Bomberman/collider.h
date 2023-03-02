@@ -2,7 +2,7 @@
 #include <memory>
 #include "bm-math.h"
 #include "game-object.h"
-
+#include "collision-info.h"
 namespace Physics {
 	enum ColliderType
 	{
@@ -10,14 +10,15 @@ namespace Physics {
 		KINEMATIC
 	};
 	class BoxCollider;
-	class Collider : public Core::IUpdatable {
+	class CircleCollider;
+	class Collider {
 	public:
 
-		~Collider() {};
+		~Collider();
 		Collider(const Collider&) = default;
 		Collider& operator =(const Collider&) = default;
-		Collider()
-			: owner(nullptr)
+		Collider(Actors::GameObject& in_owner)
+			: owner(in_owner)
 			, position(Vector2f())
 			, width(0)
 			, heigth(0)
@@ -27,15 +28,21 @@ namespace Physics {
 	protected:
 
 	public:
-		virtual bool CheckForCollisions(const Collider& in_other) const = 0;
-		virtual bool CheckForCollisions(const BoxCollider& in_other)const  = 0;
-		void Update() override;
+		virtual void Destroy(int id);
+		virtual bool CheckForCollisions(const Collider& in_other, struct CollisionInfo& in_info) const = 0;
+		virtual bool CheckForCollisions(const BoxCollider& in_other, struct CollisionInfo& in_info)const  = 0;
+		virtual bool CheckForCollisions(const CircleCollider& in_other, struct CollisionInfo& in_info)const = 0;
+		virtual void Update();
+		int GetId() const { return id; }
+	protected:
+		int id;
 	public:
-		std::shared_ptr<Actors::GameObject> owner;
+		Actors::GameObject& owner;
 		ColliderType type;
 		Vector2f position;
 		int width;
 		int heigth;
 		Vector2f offset;
+
 	};
 }

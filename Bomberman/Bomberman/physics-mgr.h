@@ -1,11 +1,10 @@
 #pragma once
 #include <memory>
-#include "IUpdatable.h"
 #include <vector>
-
+#include "bm-math.h"
+#include "box-collider.h"
 namespace Physics {
-	class Collider;
-	class PhysicsMgr : public Core::IUpdatable {
+	class PhysicsMgr {
 	public:
 		PhysicsMgr(const PhysicsMgr&) = default;
 		PhysicsMgr& operator=(const PhysicsMgr&) = default;
@@ -14,10 +13,13 @@ namespace Physics {
 		PhysicsMgr();
 
 	public:
-		void Update() override;
-		static void SubscribeToPhysicsMgr(Collider* in_collider);
+		void Update();
+		static bool BoxOverlap(const Vector2f in_at_pos, const int in_width, const int in_height);
+		static bool BoxOverlap(const Vector2f in_at_pos, std::vector<Actors::GameObject*>& BoxOverlap,const int in_width, const int in_height);
+		static void SubscribeToPhysicsMgr(std::shared_ptr<Collider> in_collider);
 		static PhysicsMgr& GetInstance();
-		static std::vector<Collider*> colliders_in_scene;
+		static std::vector<std::weak_ptr<Collider>> colliders_in_scene;
+		static int collider_id;
 	private:
 		static std::unique_ptr<PhysicsMgr> instance;
 	};

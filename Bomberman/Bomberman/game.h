@@ -3,7 +3,6 @@
 #include "screen.h"
 #include <vector>
 #include <string>
-#include "IUpdatable.h"
 #include "SDL.h"
 
 namespace Actors {
@@ -26,15 +25,17 @@ namespace Core {
 		static Game& GetInstance();
 		int Init();
 		void Loop();
-		static void Subscribe_Object_To_Drawables(Actors::GameObject* in_obj);
-		static void Subscribe_Object_To_Updatables(IUpdatable* in_updatable);
+		void MapInit();
+		void TexturesInit();
+		static void SubscribeObjectToScene(Actors::GameObject* in_obj);
+		static void MoveObjectToGarbageCollector(const int id);
 	private:
 		void DrawAll();
 		void UpdateAll();
 	public:
 		std::shared_ptr<Graphics::Screen> screen;
-		static std::vector<Actors::GameObject*> drawables;
-		static std::vector<IUpdatable*>  updatables;
+		static std::vector<std::shared_ptr<Actors::GameObject>> actors_in_scene;
+		static int gameobject_id;
 	private:
 		static std::unique_ptr<Game> instance;
 		SDL_Event event;

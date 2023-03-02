@@ -1,4 +1,5 @@
 #include "game-object.h"
+#include "physics-mgr.h"
 #include "SDL_Image.h"
 #include "game.h"
 #include <stdlib.h>
@@ -9,15 +10,17 @@ namespace Actors {
 		: width(0)
 		, height(0)
 		, position(Vector2f())
-		, curr_animation(nullptr)
+		, tag(GOT_DEFAULT)
+		, id(Core::Game::gameobject_id++)
+		, own_collider(nullptr)
 	{
 
 	}
 
-	GameObject::GameObject(std::string in_path, const Physics::ColliderType in_type)
+	GameObject::GameObject(std::string in_path)
 		: GameObject()
 	{
-		Core::Game::Subscribe_Object_To_Drawables(this);
+		Core::Game::SubscribeObjectToScene(this);
 		SDL_Surface* surface = IMG_Load(in_path.c_str());
 		if (surface == nullptr)
 		{
@@ -45,50 +48,29 @@ namespace Actors {
 		dstrect->x = 0;
 		dstrect->y = 0;
 		velocity = Vector2f::zero;
-		own_collider = std::make_shared<Physics::BoxCollider>(*this, in_type);
 	}
 
-	GameObject::GameObject(std::string in_path, const int in_width, const int in_height, Vector2f in_pos, const Physics::ColliderType in_type)
-		: GameObject(in_path, in_type)
+	GameObject::GameObject(std::string in_path, const int in_width, const int in_height, Vector2f in_pos)
+		: GameObject(in_path)
 	{
 		position = in_pos;
 		width = in_width;
 		height = in_height;
 		dstrect->w = width;
 		dstrect->h = height;
-
-		own_collider->heigth = height;
-		own_collider->width = width;
-		own_collider->position = position;
 	}
 
 
 	GameObject::~GameObject()
-	{
+ 	{
 	}
-	void GameObject::ChangeCurrentState(const FSM::States in_new_state)
-	{
-		curr_state->OnExit(*this);
-		curr_state = states_map[in_new_state];
-		curr_state->OnEnter(*this);
-	}
-	void GameObject::InsertAnimation(std::string in_key, std::shared_ptr<Animations::Animation> in_anim)
-	{
-		animations_map[in_key] = in_anim;
-		curr_animation = in_anim;
-	}
-	void GameObject::ChangeCurrAnimation(std::string in_new_anim_key)
-	{
-		if (curr_animation == nullptr) {
-			return;
 
-		}
-
-		curr_animation->Stop();
-		curr_animation->Reset();
-		curr_animation = animations_map[in_new_anim_key];
-		curr_animation->Play();
+	void GameObject::AttachCollider(std::shared_ptr<Physics::Collider> in_collider)
+	{
+		own_collider = in_collider;
+		Physics::PhysicsMgr::SubscribeToPhysicsMgr(in_collider);
 	}
+
 	void GameObject::ChangeSprite(const std::shared_ptr<SDL_Texture*> in_new_texture, const int in_x, const int in_y, const int in_width, const int in_height)
 	{
 		srcrect.get()->x = in_x;
@@ -105,6 +87,19 @@ namespace Actors {
 	{
 		dstrect->x = position.x;
 		dstrect->y = position.y;
+
+		if (own_collider.get())
+		{
+			own_collider->Update();
+		}
+	}
+	void GameObject::Destroy()
+	{
+		if (own_collider.get())
+		{
+			own_collider->Destroy(own_collider->GetId());
+		}
+		Core::Game::MoveObjectToGarbageCollector(this->id);
 	}
 }
 

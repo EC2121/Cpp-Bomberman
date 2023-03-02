@@ -7,15 +7,19 @@ namespace Core {
 	std::unique_ptr<Time> Time::instance;
 	float Time::now;
 	float Time::last;
+
+
 	Time::Time()
 	{
 	}
-	void Time::Init()
+
+	Time& Time::GetInstance()
 	{
 		if (instance == nullptr)
 		{
 			instance = std::unique_ptr<Time>(new Time());
 		}
+		return *instance;
 	}
 	void Time::Update()
 	{

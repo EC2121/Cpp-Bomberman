@@ -3,10 +3,10 @@
 #include <memory>
 #include <string>
 #include "bm-math.h"
-#include "IUpdatable.h"
 #include "animation.h"
 #include "state.h"
 #include <map>
+#include "collision-info.h"
 namespace Physics {
 	class Collider;
 	enum ColliderType;
@@ -21,40 +21,52 @@ namespace Actors {
 		GOET_FAILED_TO_CREATE_TEXTURE,
 		GOET_MAX
 	};
+	enum GameObjectTag
+	{
+		GOT_DEFAULT,
+		GOT_PLAYER,
+		GOT_DESTROYABLE,
+		GOT_STATIC
+	};
 
-
-	class GameObject : public Core::IUpdatable {
+	class GameObject {
 	public:
 		GameObject();
-		GameObject(std::string in_path, const Physics::ColliderType in_type);
-		GameObject(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos, const Physics::ColliderType in_type);
+		GameObject(std::string in_path);
+		GameObject(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos);
 		~GameObject();
 	public:
-		void ChangeCurrentState(const FSM::States in_new_state);
-		void InsertAnimation(std::string in_key, std::shared_ptr<Animations::Animation> in_anim);
-		void ChangeCurrAnimation(std::string in_new_anim_key);
-		Vector2f GetPosition() const { return position; };
+		void AttachCollider(std::shared_ptr<Physics::Collider> in_collider);
+		/*void InsertAnimation(std::string in_key, std::shared_ptr<Animations::Animation> in_anim);
+		void ChangeCurrAnimation(std::string in_new_anim_key);*/
+		const std::shared_ptr<Physics::Collider>& GetCollider() const { return own_collider; }
+		Vector2i GetSize() const { return Vector2i(width, height); }
+		int GetWidth() const { return width; }
+		int GetHeight() const { return height; }
+		int GetId() const { return id; }
+		Vector2f GetPosition() const { return position; }
+		void ResetVelocity() { velocity = Vector2f::zero; };
 		void ChangeSprite(const std::shared_ptr<SDL_Texture*> in_new_texture, const int in_x, const int in_y, const int in_width, const int in_height);
-		virtual void OnCollide() {};
-		void Draw();
-		void Update() override;
-
+		virtual void OnCollide(Physics::CollisionInfo in_info) {};
+		virtual void Draw();
+		virtual void Update();
+		void Destroy();
 
 	public:
+		GameObjectTag tag;
+	protected:
+		int id;
 		int width;
 		int height;
-	protected:
-		std::shared_ptr<FSM::State> curr_state;
-		std::map<FSM::States, std::shared_ptr<FSM::State>> states_map;
-		GameObjectErrorType error_type = GOET_NONE;
-		std::shared_ptr<Animations::Animation> curr_animation;
-		std::map<std::string, std::shared_ptr<Animations::Animation>> animations_map;
+
+
 		std::shared_ptr<SDL_Rect> dstrect;
 		std::shared_ptr<SDL_Rect> srcrect;
 		std::shared_ptr<SDL_Texture*> texture;
+		std::shared_ptr<Physics::Collider> own_collider;
+		GameObjectErrorType error_type = GOET_NONE;
 		Vector2f position;
 		Vector2f velocity;
-		std::shared_ptr<Physics::Collider> own_collider;
 
 
 

@@ -38,9 +38,10 @@ struct Vector2f
 	Vector2f operator*(const float& in_float);
 	Vector2f& operator+=(const Vector2f& in_other);
 	Vector2f& operator*=(const float in_other);
+	Vector2f operator/(const float& in_other);
 	Vector2f& operator-();
 	bool operator>(Vector2f& in_other);
-	float Magnitude() { return fabs(sqrt(powf(this->x, 2)) + sqrt(powf(this->y, 2))); }
+	float Magnitude() { return sqrt(powf(this->x, 2) + powf(this->y, 2)); }
 	float x;
 	float y;
 	static const Vector2f zero;

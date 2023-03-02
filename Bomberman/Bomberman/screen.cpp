@@ -14,7 +14,7 @@ namespace Graphics {
 			std::cout << error_type << SDL_GetError();
 			return;
 		}
-		window = SDL_CreateWindow("SDL is active!", 100, 100, in_width, in_height, 0);
+		window = SDL_CreateWindow("SDL is active!", 0, 100, in_width, in_height, 0);
 		if (window == nullptr)
 		{
 			error_type = SET_SDL_WINDOW_INIT_ERROR;
@@ -34,7 +34,6 @@ namespace Graphics {
 		{
 			SDL_DestroyRenderer(renderer);
 		}
-
 		if (window)
 		{
 			SDL_DestroyWindow(window);

@@ -4,8 +4,13 @@
 #include <iostream>
 #include "game.h"
 namespace Animations {
+
+
 	Animation::Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms)
 		: owner(in_owner)
+		, last_frame(false)
+		, should_invoke_event_on_last_frame(false)
+
 	{
 
 		SDL_Surface* surface = IMG_Load(in_path.c_str());
@@ -22,21 +27,41 @@ namespace Animations {
 		number_of_frames_per_row = in_number_of_frames_per_row;
 		number_of_frames_per_column = in_number_of_frames_per_column;
 		frame_rate_in_ms = in_frame_rate_in_ms;
+		ticks = 0;
+		time = 0;
+		time_of_start = 0;
+	}
 
+	Animation::Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms, const bool in_should_invoke_event, OnAnimationEnd in_func)
+		: Animation(in_owner, in_path, in_number_of_frames_per_row, in_number_of_frames_per_column, in_frame_rate_in_ms)
+
+	{
+		on_animation_end = in_func;
+		should_invoke_event_on_last_frame = in_should_invoke_event;
 	}
 
 	void Animation::Update()
 	{
 		if (is_playing)
 		{
-			ticks = SDL_GetTicks();
+			ticks = SDL_GetTicks() - time_of_start;
 			time = ticks / frame_rate_in_ms;
-			Uint32 x = width * (time % number_of_frames_per_row);
-			owner.ChangeSprite(anim_texture,x, 0, width, height);
+			Uint32 x = (time % number_of_frames_per_row);
+			last_frame = (last_frame && x <= number_of_frames_per_row) ? false : last_frame;
+			owner.ChangeSprite(anim_texture, width * x, 0, width, height);
+
+			if (should_invoke_event_on_last_frame &&
+				(!last_frame && x == number_of_frames_per_row - 1) &&
+				(SDL_GetTicks() - time_of_start) > frame_rate_in_ms)
+			{
+				on_animation_end();
+				last_frame = true;
+			}
 		}
 	}
 	void Animation::Reset()
 	{
+		time_of_start = 0;
 		ticks = 0;
 		time = 0;
 	}

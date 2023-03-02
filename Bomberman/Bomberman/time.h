@@ -1,20 +1,19 @@
 #pragma once
-#include "IUpdatable.h"
 #include<memory>
 namespace Core {
-	class Time : public IUpdatable {
+	class Time{
 
 	public:
 		~Time() = default;
 		Time(const Time&) = default;
 		Time& operator=(const Time&) = delete;
-	private:
+	protected:
 		Time();
 
 	public:
-		static void Init();
-		static float GetDeltatime(){ return deltatime; }
-		void Update() override;
+		static Time& GetInstance();
+		static float GetDeltatime() { return deltatime; }
+		void Update();
 	private:
 		static float now;
 		static float last;
