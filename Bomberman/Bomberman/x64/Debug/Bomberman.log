@@ -1,9 +1,64 @@
-﻿  player.cpp
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\bm-math.h(44,33): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(31,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(32,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(33,60): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(33,48): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+﻿  animation.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\animation.cpp(56,17): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\animation.cpp(58,34): warning C4018: '<=': signed/unsigned mismatch
+  bm-math.cpp
+  bomb.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xutility(231,77): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2023,1): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Actors::Bomb&,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,int,int,int,bool,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *>>(_Ty &,Actors::Bomb &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&,int &&,int &&,int &&,bool &&,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *> &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Animations::Animation
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2703,36): message : see reference to function template instantiation 'std::_Ref_count_obj2<Animations::Animation>::_Ref_count_obj2<Actors::Bomb&,_Ty,int,int,int,bool,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *>>(Actors::Bomb &,_Ty &&,int &&,int &&,int &&,bool &&,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *> &&)' being compiled
+          with
+          [
+              _Ty=std::string
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2704,20): message : see reference to function template instantiation 'std::_Ref_count_obj2<Animations::Animation>::_Ref_count_obj2<Actors::Bomb&,_Ty,int,int,int,bool,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *>>(Actors::Bomb &,_Ty &&,int &&,int &&,int &&,bool &&,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *> &&)' being compiled
+          with
+          [
+              _Ty=std::string
+          ]
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\bomb.cpp(15,173): message : see reference to function template instantiation 'std::shared_ptr<Animations::Animation> std::make_shared<Animations::Animation,Actors::Bomb&,std::string,int,int,int,bool,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *>>(Actors::Bomb &,std::string &&,int &&,int &&,int &&,bool &&,std::_Binder<std::_Unforced,void (__cdecl Actors::Bomb::* )(void),Actors::Bomb *> &&)' being compiled
+  box-collider.cpp
+  circle-collider.cpp
+  collider.cpp
+  destroyable-wall.cpp
+  game-object.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game-object.cpp(83,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game-object.cpp(84,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  game.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(72,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(73,15): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(82,71): warning C4244: 'argument': conversion from 'size_t' to 'const float', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(82,63): warning C4244: 'argument': conversion from 'size_t' to 'const float', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(89,96): warning C4244: 'argument': conversion from 'size_t' to 'const float', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(89,88): warning C4244: 'argument': conversion from 'size_t' to 'const float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xutility(231,77): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2023,1): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,float&,float&>(_Ty &,float &,float &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=Graphics::Screen
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2703,36): message : see reference to function template instantiation 'std::_Ref_count_obj2<Graphics::Screen>::_Ref_count_obj2<float&,float&>(float &,float &)' being compiled
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\memory(2704,20): message : see reference to function template instantiation 'std::_Ref_count_obj2<Graphics::Screen>::_Ref_count_obj2<float&,float&>(float &,float &)' being compiled
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\game.cpp(44,61): message : see reference to function template instantiation 'std::shared_ptr<Graphics::Screen> std::make_shared<Graphics::Screen,float&,float&>(float &,float &)' being compiled
+  garbage-collector.cpp
+  IAnimatable.cpp
+  IStateMachinable.cpp
+  main.cpp
+  physics-mgr.cpp
+  physics-mgr.h
+  player-attack-state.cpp
+  player.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(34,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(35,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(36,60): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(36,48): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xutility(231,77): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
           with
           [
@@ -24,5 +79,18 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.3193
           [
               _Ty=std::string
           ]
-W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(73,102): message : see reference to function template instantiation 'std::shared_ptr<Animations::Animation> std::make_shared<Animations::Animation,Actors::Player&,std::string,int,int,int>(Actors::Player &,std::string &&,int &&,int &&,int &&)' being compiled
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\player.cpp(76,102): message : see reference to function template instantiation 'std::shared_ptr<Animations::Animation> std::make_shared<Animations::Animation,Actors::Player&,std::string,int,int,int>(Actors::Player &,std::string &&,int &&,int &&,int &&)' being compiled
+  player_idle_state.cpp
+  player_walk_state.cpp
+  resources.cpp
+  Generating Code...
+  Compiling...
+  screen.cpp
+  wall.cpp
+  wall.h
+  time.cpp
+W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\Bomberman\time.cpp(26,27): warning C4244: '=': conversion from 'Uint32' to 'float', possible loss of data
+  Generating Code...
+x64\Debug\physics-mgr.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\wall.obj : warning LNK4042: object specified more than once; extras ignored
   Bomberman.vcxproj -> W:\GitHub\VisualStudio\Cpp-Bomberman\Bomberman\x64\Debug\Bomberman.exe

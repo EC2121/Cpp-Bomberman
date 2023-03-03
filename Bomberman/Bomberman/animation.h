@@ -18,9 +18,9 @@ namespace Animations {
 	public:
 		Animation() = delete;
 		~Animation() = default;
-		Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row,
+		Animation(Actors::GameObject& in_owner, std::string const& in_path, const int in_number_of_frames_per_row,
 			const int in_number_of_frames_per_column, const float in_frame_rate_in_ms);
-		Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row,
+		Animation(Actors::GameObject& in_owner, std::string const& in_path, const int in_number_of_frames_per_row,
 			const int in_number_of_frames_per_column, const float in_frame_rate_in_ms,const bool in_should_invoke_event , OnAnimationEnd in_func);
 	public:
 		void Play() { is_playing = true; time_of_start = SDL_GetTicks(); };
@@ -40,7 +40,7 @@ namespace Animations {
 		int height;
 		int number_of_frames_per_row;
 		int number_of_frames_per_column;
-		int frame_rate_in_ms;
+		float frame_rate_in_ms;
 		bool last_frame;
 		Uint32 time_of_start;
 		Uint32 ticks;

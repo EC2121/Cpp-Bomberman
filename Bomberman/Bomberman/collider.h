@@ -19,11 +19,12 @@ namespace Physics {
 		Collider& operator =(const Collider&) = default;
 		Collider(Actors::GameObject& in_owner)
 			: owner(in_owner)
-			, position(Vector2f())
+			, position(Vector2f::zero)
 			, width(0)
 			, heigth(0)
 			, offset(Vector2f())
 			, type(STATIC)
+			, id(0)
 		{};
 	protected:
 

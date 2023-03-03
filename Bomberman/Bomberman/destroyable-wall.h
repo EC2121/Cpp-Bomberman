@@ -6,7 +6,7 @@ namespace Actors {
 	public:
 		DestroyableWall() = delete;
 		DestroyableWall(const int in_width, const int in_height, const Vector2f in_pos);
-		~DestroyableWall() = default;
+		virtual ~DestroyableWall() override = default;
 		DestroyableWall(const DestroyableWall&) = default;
 		DestroyableWall& operator=(const DestroyableWall&) = delete;
 

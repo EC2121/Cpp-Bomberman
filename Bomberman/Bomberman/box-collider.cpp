@@ -6,9 +6,9 @@
 namespace Physics {
 	BoxCollider::BoxCollider(Actors::GameObject& in_owner)
 		: Collider(in_owner)
-		
+
 	{
-		
+
 		id = PhysicsMgr::collider_id++;
 		width = owner.GetWidth();
 		heigth = owner.GetHeight();
@@ -29,6 +29,14 @@ namespace Physics {
 		offset = in_offset;
 	}
 
+	BoxCollider::BoxCollider(Actors::GameObject& in_owner, const Vector2f in_pos, const int in_width, const int in_height, const ColliderType in_type)
+		:BoxCollider(in_owner, in_type)
+	{
+		width = in_width;
+		heigth = in_height;
+		position = in_pos;
+	}
+
 	bool BoxCollider::CheckForCollisions(const Collider& in_other, CollisionInfo& in_info) const
 	{
 		return in_other.CheckForCollisions(*this, in_info);
@@ -37,8 +45,6 @@ namespace Physics {
 	bool BoxCollider::CheckForCollisions(const BoxCollider& in_other, CollisionInfo& in_info) const
 	{
 
-
-		//
 		if (
 			position.x < in_other.position.x + in_other.width &&
 			position.x + width > in_other.position.x &&

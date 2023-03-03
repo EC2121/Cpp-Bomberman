@@ -1,6 +1,10 @@
 #include "IStateMachinable.h"
 #include "game-object.h"
 namespace FSM {
+	IStateMachinable::~IStateMachinable()
+	{
+		states_map.clear();
+	}
 	void IStateMachinable::InsertState(States in_key, std::shared_ptr<State> in_state)
 	{
 		states_map[in_key] = in_state;

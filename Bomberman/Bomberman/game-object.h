@@ -32,13 +32,11 @@ namespace Actors {
 	class GameObject {
 	public:
 		GameObject();
-		GameObject(std::string in_path);
-		GameObject(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos);
-		~GameObject();
+		GameObject(std::string const& in_path);
+		GameObject(std::string const& in_path, const int in_width, const int in_height, const Vector2f in_pos);
+		virtual ~GameObject() = default;
 	public:
 		void AttachCollider(std::shared_ptr<Physics::Collider> in_collider);
-		/*void InsertAnimation(std::string in_key, std::shared_ptr<Animations::Animation> in_anim);
-		void ChangeCurrAnimation(std::string in_new_anim_key);*/
 		const std::shared_ptr<Physics::Collider>& GetCollider() const { return own_collider; }
 		Vector2i GetSize() const { return Vector2i(width, height); }
 		int GetWidth() const { return width; }

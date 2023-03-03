@@ -9,7 +9,7 @@ namespace FSM {
 	class IStateMachinable {
 	public:
 		IStateMachinable() = default;
-
+		~IStateMachinable();
 	public:
 		void InsertState(States in_key, std::shared_ptr<State> in_state);
 		void ChangeCurrentState(Actors::GameObject& in_owner,States in_key);

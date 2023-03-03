@@ -3,11 +3,16 @@
 #include "resources.h"
 #include "physics-mgr.h"
 #include "collider.h"
+#include <iostream>
+
 namespace Actors {
-	Bomb::Bomb(const Vector2f in_pos)
-		: GameObject(Resources::Paths::GetPath("bomb"), 100, 100, in_pos)
+	Bomb::~Bomb()
 	{
-		InsertAnimation("bomb", std::make_shared<Animations::Animation>(*this, Resources::Paths::GetPath("bomb_explosion"), 23, 1, 75, true,std::bind(&Bomb::OnBombExplosion,this)));
+	}
+	Bomb::Bomb(const Vector2f in_pos)
+		: GameObject(Resources::Paths::GetPath("bomb_explosion"), 100, 100, in_pos)
+	{
+		InsertAnimation("bomb", std::make_shared<Animations::Animation>(*this, Resources::Paths::GetPath("bomb_explosion"), 23, 1, 50, true,std::bind(&Bomb::OnBombExplosion,this)));
 		ChangeCurrentAnimation("bomb");
 		AttachCollider(std::make_shared<Physics::BoxCollider>(*this, Physics::KINEMATIC));
 		position.x -= 25;
@@ -23,12 +28,13 @@ namespace Actors {
 
 	void Bomb::OnBombExplosion()
 	{
-		std::vector<GameObject*> temp_arr;
-		Physics::PhysicsMgr::BoxOverlap(position, temp_arr, 96, 96);
-		for (auto a : temp_arr)
-		{
-			//if(a->tag == GOT_DESTROYABLE) delete a;
+		std::vector<GameObject*> collided_with;
 
+		Physics::PhysicsMgr::CrossBoxOverlap(Vector2f(position.x + 25, position.y + 25), 48, 48, collided_with, GOT_DESTROYABLE);
+		
+		for (GameObject*& game_object : collided_with)
+		{
+			game_object->Destroy();
 		}
 
 		Destroy();

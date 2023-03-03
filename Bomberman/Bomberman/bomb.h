@@ -8,6 +8,7 @@ namespace Actors {
 
 	public:
 		Bomb() = delete;
+		virtual ~Bomb() override;
 		Bomb(const Bomb&) = default;
 		Bomb& operator=(const Bomb&) = delete;
 

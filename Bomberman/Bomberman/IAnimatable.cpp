@@ -5,13 +5,18 @@ namespace Animations {
 
 
 
-	void IAnimatable::InsertAnimation(std::string in_key, std::shared_ptr<Animations::Animation> in_anim)
+	IAnimatable::~IAnimatable()
+	{
+		animations_map.clear();
+	}
+
+	void IAnimatable::InsertAnimation(std::string const& in_key, std::shared_ptr<Animations::Animation> in_anim)
 	{
 		animations_map[in_key] = in_anim;
 		curr_animation = in_anim;
 	}
 
-	void IAnimatable::ChangeCurrentAnimation(std::string in_new_anim_key)
+	void IAnimatable::ChangeCurrentAnimation(std::string const& in_new_anim_key)
 	{
 		if (curr_animation == nullptr) {
 			return;

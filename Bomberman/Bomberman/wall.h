@@ -7,7 +7,7 @@ namespace Actors {
 	public:
 		Wall() = default;
 		Wall(const int in_width, const int in_height, const Vector2f in_pos);
-		~Wall() = default;
+		virtual ~Wall() override = default;
 		Wall(const Wall&) = default;
 		Wall& operator=(const Wall&) = delete;
 

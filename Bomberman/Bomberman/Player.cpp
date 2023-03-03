@@ -10,14 +10,17 @@
 #define PLAYER_SPEED 150.f;
 #define BOMB_COOLDOWN_IN_MS 1000.f
 namespace Actors {
-	Player::Player(std::string in_path)
+	Player::~Player()
+	{
+	}
+	Player::Player(std::string const& in_path)
 		: GameObject(in_path)
 
 	{
 		Init();
 	}
 
-	Player::Player(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos)
+	Player::Player(std::string const& in_path, const int in_width, const int in_height, const Vector2f in_pos)
 		: GameObject(in_path, in_width, in_height, in_pos)
 	{
 		Init();

@@ -14,8 +14,8 @@
 #include "garbage-collector.h"
 #include <algorithm>
 #include <iostream>
-#include "texture-mgr.h"
 #define MAP_DIMESNIONS Vector2f(1200,720);
+
 namespace Core {
 	std::vector<std::shared_ptr<Actors::GameObject>> Game::actors_in_scene;
 	std::unique_ptr<Game> Game::instance(nullptr);
@@ -100,11 +100,13 @@ namespace Core {
 	{
 		SDL_RenderClear(screen.get()->GetRenderer());
 
-		for (size_t x = 0; x < actors_in_scene.size(); x++)
+		for (std::shared_ptr<Actors::GameObject>& actor : actors_in_scene)
 		{
-			actors_in_scene[x]->Draw();
+			if (actor.get())
+			{
+				actor->Draw();
+			}
 		}
-
 		SDL_RenderPresent(screen->GetRenderer());
 	}
 
@@ -112,11 +114,14 @@ namespace Core {
 	{
 		Time::GetInstance().Update();
 		Physics::PhysicsMgr::GetInstance().Update();
-		
-		for (size_t x = 0; x < actors_in_scene.size(); x++)
+		for (std::shared_ptr<Actors::GameObject>& actor : actors_in_scene)
 		{
-			actors_in_scene[x]->Update();
+			if (actor.get())
+			{
+				actor->Update();
+			}
 		}
+
 		Uint32 time = SDL_GetTicks();
 		if (time % 1000 >= 990)
 		{

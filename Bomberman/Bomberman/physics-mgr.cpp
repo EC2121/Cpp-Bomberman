@@ -38,41 +38,75 @@ namespace Physics {
 
 	bool PhysicsMgr::BoxOverlap(const Vector2f in_at_pos, const int in_width, const int in_height)
 	{
+		//TODO
 		Actors::GameObject temp_go = Actors::GameObject();
-		BoxCollider temp = BoxCollider(temp_go,STATIC);
+		BoxCollider temp = BoxCollider(temp_go, STATIC);
 		temp.position = in_at_pos;
 		temp.width = in_width;
 		temp.heigth = in_height;
 		CollisionInfo info;
-		/*for (size_t i = 0; i < colliders_in_scene.size(); i++)
-		{
-			if (&temp == colliders_in_scene[i].get()) continue;
-			if (temp.CheckForCollisions(*colliders_in_scene[i], info))
-			{
-				return true;
-			}
-		}*/
+
 		return false;
 
 
 	}
 
-	bool PhysicsMgr::BoxOverlap(const Vector2f in_at_pos, std::vector<Actors::GameObject*>& BoxOverlap, const int in_width, const int in_height)
+	bool PhysicsMgr::BoxOverlap(const Vector2f in_at_pos, const int in_width, const int in_height, std::vector<Actors::GameObject*>& in_collided_with, const Actors::GameObjectTag in_filter)
 	{
-		//std::shared_ptr<BoxCollider> temp_box = std::make_shared<BoxCollider>(nullptr, STATIC);
-		/*temp_box->position = in_at_pos;
-		temp_box->width = in_width;
-		temp_box->heigth = in_height;
+		Actors::GameObject* temp_go = new Actors::GameObject();
+		std::shared_ptr<BoxCollider> temp_box_collide = std::make_shared<BoxCollider>(*temp_go, STATIC);
+		temp_box_collide->position = in_at_pos;
+		temp_box_collide->width = in_width;
+		temp_box_collide->heigth = in_height;
+		std::cout << "x: " << temp_box_collide->position.x << " y: " << temp_box_collide->position.y << std::endl;
 		CollisionInfo info;
-		for (size_t i = 0; i < colliders_in_scene.size(); i++)
+
+		for (std::weak_ptr<Collider>& collider : colliders_in_scene)
 		{
-			if (temp_box.get() == colliders_in_scene[i]) continue;
-			if (temp_box->CheckForCollisions(*colliders_in_scene[i], info))
+			if (temp_box_collide == collider.lock()) continue;
+			if (collider.lock()->owner.tag != in_filter) continue;
+			if (temp_box_collide->CheckForCollisions(*collider.lock(), info))
 			{
-				BoxOverlap.push_back(&colliders_in_scene[i]->owner);
+				in_collided_with.push_back(&collider.lock()->owner);
 			}
-		}*/
-		return false;
+		}
+		temp_go->Destroy();
+		return in_collided_with.size() > 0;
+	}
+
+	bool PhysicsMgr::CrossBoxOverlap(const Vector2f in_at_pos, const int in_width, const int in_height, std::vector<Actors::GameObject*>& in_collided_with, const Actors::GameObjectTag in_filter)
+	{
+		std::shared_ptr<Actors::GameObject> temp_go = std::make_shared<Actors::GameObject>();
+		std::vector<std::shared_ptr<Collider>> temp_arr;
+		temp_arr.push_back(std::make_shared<BoxCollider>(*temp_go,
+			Vector2f(in_at_pos.x, in_at_pos.y + 48), in_width, in_height, STATIC));
+
+		temp_arr.push_back(std::make_shared<BoxCollider>(*temp_go,
+			Vector2f(in_at_pos.x, in_at_pos.y - 48), in_width, in_height, STATIC));
+
+		temp_arr.push_back(std::make_shared<BoxCollider>(*temp_go,
+			Vector2f(in_at_pos.x + 48, in_at_pos.y), in_width, in_height, STATIC));
+
+		temp_arr.push_back(std::make_shared<BoxCollider>(*temp_go,
+			Vector2f(in_at_pos.x - 48, in_at_pos.y), in_width, in_height, STATIC));
+
+		CollisionInfo info;
+		for (std::shared_ptr<Collider>& collider : temp_arr)
+		{
+			for (std::weak_ptr<Collider>& collider_in_scene : colliders_in_scene)
+			{
+				if (collider == collider_in_scene.lock()) continue;
+				if (collider_in_scene.lock()->owner.tag != in_filter) continue;
+				if (collider->CheckForCollisions(*collider_in_scene.lock(), info))
+				{
+					in_collided_with.push_back(&collider_in_scene.lock()->owner);
+				}
+			}
+		}
+
+		temp_go->Destroy();
+		temp_go.reset();
+		return in_collided_with.size() > 0;
 	}
 
 	void PhysicsMgr::SubscribeToPhysicsMgr(std::shared_ptr<Collider> in_collider)

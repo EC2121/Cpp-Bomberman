@@ -9,6 +9,7 @@ namespace Physics {
 		BoxCollider(Actors::GameObject& in_owner);
 		BoxCollider(Actors::GameObject& in_owner, const ColliderType in_type);
 		BoxCollider(Actors::GameObject& in_owner, const Vector2f in_offset, const ColliderType in_type);
+		BoxCollider(Actors::GameObject& in_owner, const Vector2f in_pos, const int in_width, const int in_height, const ColliderType in_type);
 	
 	public:
 		virtual bool CheckForCollisions(const Collider& in_other, CollisionInfo& in_info) const override;

@@ -158,7 +158,6 @@
     <ClCompile Include="player_walk_state.cpp" />
     <ClCompile Include="resources.cpp" />
     <ClCompile Include="screen.cpp" />
-    <ClCompile Include="texture-mgr.cpp" />
     <ClCompile Include="wall.cpp" />
     <ClCompile Include="wall.h" />
     <ClCompile Include="time.cpp" />
@@ -185,7 +184,6 @@
     <ClInclude Include="screen.h" />
     <ClInclude Include="circle-collider.h" />
     <ClInclude Include="state.h" />
-    <ClInclude Include="texture-mgr.h" />
     <ClInclude Include="time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

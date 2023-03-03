@@ -8,10 +8,10 @@ namespace Animations {
 	class IAnimatable {
 	public:
 		IAnimatable() = default;
-
+		~IAnimatable();
 	public:
-		void InsertAnimation(std::string in_key, std::shared_ptr<Animation> in_anim);
-		void ChangeCurrentAnimation(std::string in_new_anim_key);
+		void InsertAnimation(std::string const& in_key, std::shared_ptr<Animation> in_anim);
+		void ChangeCurrentAnimation(std::string const& in_new_anim_key);
 	protected:
 		void Update();
 

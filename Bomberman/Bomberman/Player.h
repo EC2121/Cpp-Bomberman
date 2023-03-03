@@ -10,8 +10,9 @@ namespace Actors {
 
 	public:
 		Player() = delete;
-		Player(std::string in_path);
-		Player(std::string in_path, const int in_width, const int in_height, const Vector2f in_pos);
+		virtual ~Player() override;
+		Player(std::string const& in_path);
+		Player(std::string const& in_path, const int in_width, const int in_height, const Vector2f in_pos);
 		Player(const Player&) = default;
 		Player& operator=(const Player&) = delete;
 

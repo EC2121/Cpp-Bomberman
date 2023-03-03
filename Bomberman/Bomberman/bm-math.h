@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <iostream>
 struct Vector2i
 {
 	Vector2i()
@@ -32,8 +33,10 @@ struct Vector2f
 		x = in_other.x;
 		y = in_other.y;
 	}
+
 	Vector2f& operator=(const Vector2f& in_other);
 	Vector2f operator+(const Vector2f& in_other);
+	Vector2f operator-(const Vector2f& in_other);
 	Vector2f operator*(const Vector2f& in_other);
 	Vector2f operator*(const float& in_float);
 	Vector2f& operator+=(const Vector2f& in_other);
@@ -45,4 +48,8 @@ struct Vector2f
 	float x;
 	float y;
 	static const Vector2f zero;
+	static const Vector2f up;
+	static const Vector2f down;
+	static const Vector2f right;
+	static const Vector2f left;
 };

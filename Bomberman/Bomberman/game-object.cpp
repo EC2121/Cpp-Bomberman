@@ -17,7 +17,7 @@ namespace Actors {
 
 	}
 
-	GameObject::GameObject(std::string in_path)
+	GameObject::GameObject(std::string const& in_path)
 		: GameObject()
 	{
 		Core::Game::SubscribeObjectToScene(this);
@@ -50,7 +50,7 @@ namespace Actors {
 		velocity = Vector2f::zero;
 	}
 
-	GameObject::GameObject(std::string in_path, const int in_width, const int in_height, Vector2f in_pos)
+	GameObject::GameObject(std::string const& in_path, const int in_width, const int in_height, Vector2f in_pos)
 		: GameObject(in_path)
 	{
 		position = in_pos;
@@ -58,11 +58,6 @@ namespace Actors {
 		height = in_height;
 		dstrect->w = width;
 		dstrect->h = height;
-	}
-
-
-	GameObject::~GameObject()
- 	{
 	}
 
 	void GameObject::AttachCollider(std::shared_ptr<Physics::Collider> in_collider)
@@ -98,6 +93,10 @@ namespace Actors {
 		if (own_collider.get())
 		{
 			own_collider->Destroy(own_collider->GetId());
+		}
+		if (texture.get())
+		{
+			SDL_DestroyTexture(*texture);
 		}
 		Core::Game::MoveObjectToGarbageCollector(this->id);
 	}

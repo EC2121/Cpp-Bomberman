@@ -6,11 +6,19 @@
 namespace Animations {
 
 
-	Animation::Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms)
+	Animation::Animation(Actors::GameObject& in_owner, std::string const& in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms)
 		: owner(in_owner)
 		, last_frame(false)
 		, should_invoke_event_on_last_frame(false)
-
+		, frame_rate_in_ms(0)
+		, height(0)
+		, width(0)
+		, is_playing(false)
+		, number_of_frames_per_column(0)
+		, number_of_frames_per_row(0)
+		, ticks(0)
+		, time(0)
+		, time_of_start(0)
 	{
 
 		SDL_Surface* surface = IMG_Load(in_path.c_str());
@@ -32,7 +40,7 @@ namespace Animations {
 		time_of_start = 0;
 	}
 
-	Animation::Animation(Actors::GameObject& in_owner, std::string in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms, const bool in_should_invoke_event, OnAnimationEnd in_func)
+	Animation::Animation(Actors::GameObject& in_owner, std::string const& in_path, const int in_number_of_frames_per_row, const int in_number_of_frames_per_column, const float in_frame_rate_in_ms, const bool in_should_invoke_event, OnAnimationEnd in_func)
 		: Animation(in_owner, in_path, in_number_of_frames_per_row, in_number_of_frames_per_column, in_frame_rate_in_ms)
 
 	{

@@ -8,7 +8,7 @@ namespace Physics {
 		: Collider(in_owner)
 	{
 		id = PhysicsMgr::collider_id++;
-		radius = owner.GetWidth() / 2;
+		radius = owner.GetWidth() / 2.f;
 		position = owner.GetPosition();
 		type = STATIC;
 	}

@@ -40,82 +40,106 @@
     <Filter Include="Header Files\GarbageCollector">
       <UniqueIdentifier>{17d2a124-b16f-44e6-ae62-7001fca835e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Actors">
+      <UniqueIdentifier>{bb24d218-8209-4ada-a76d-6566ef95f0f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animations">
+      <UniqueIdentifier>{67a626f0-b7c1-46b0-8565-d179607c67de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{f464b764-7fb2-465b-9172-52a59b81a4bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM">
+      <UniqueIdentifier>{0c615830-d5a8-4398-9fb7-553c6e200cb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\Player">
+      <UniqueIdentifier>{ae7f374b-2521-4f16-8561-1f768ae7db69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GarbageCollector">
+      <UniqueIdentifier>{f874b7eb-7073-4deb-85d0-b34bb320f463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{06fab038-831e-4d97-b525-b7ffd13d5e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{044fa251-c1dc-45b2-8ef5-f26721319067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{f2ee4f8c-6b93-429a-afc6-74014638dd8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game-object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="resources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="box-collider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="collider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="physics-mgr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="time.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bm-math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="physics-mgr.h">
       <Filter>Header Files\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="player_idle_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="player_walk_state.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="circle-collider.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bomb.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="wall.h">
       <Filter>Header Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="wall.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="bomb.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="game-object.cpp">
+      <Filter>Source Files\Actors</Filter>
     </ClCompile>
     <ClCompile Include="destroyable-wall.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="player-attack-state.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="garbage-collector.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="wall.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>Source Files\Animations</Filter>
     </ClCompile>
     <ClCompile Include="IAnimatable.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="time.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="player_idle_state.cpp">
+      <Filter>Source Files\FSM\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="player_walk_state.cpp">
+      <Filter>Source Files\FSM\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="player-attack-state.cpp">
+      <Filter>Source Files\FSM\Player</Filter>
     </ClCompile>
     <ClCompile Include="IStateMachinable.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\FSM\Player</Filter>
     </ClCompile>
-    <ClCompile Include="texture-mgr.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="garbage-collector.cpp">
+      <Filter>Source Files\GarbageCollector</Filter>
+    </ClCompile>
+    <ClCompile Include="screen.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="bm-math.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="box-collider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="circle-collider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="collider.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="physics-mgr.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,9 +208,6 @@
     </ClInclude>
     <ClInclude Include="IStateMachinable.h">
       <Filter>Header Files\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="texture-mgr.h">
-      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
